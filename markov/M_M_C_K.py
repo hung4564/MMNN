@@ -15,19 +15,21 @@ class M_M_C_K(object):
         return self.r() / self.C
 
     def P0(self):
-        sum = 0
-        for i in range(0, self.C+1):
-            sum += (self.r()**i)/math.factorial(i)
+        temp1 = 0
+        temp2 = 1
+        for i in range(0, self.K):
+            temp2 *= self.lamdan(i)/self.muyn(i+1)
+            temp1 += temp2
+        return 1/(1+temp1)
 
-        temp = (self.r()**self.C)/math.factorial(self.C)
-        if self.Rho() != 1:
-            temp2 = 0
-            for n in range(self.C + 1, self.K+1):
-                temp2 += self.Rho()**(n - self.C)
+    def lamdan(self, n):
+        return self.lamda
 
-            return 1/(sum + temp * temp2)
-        elif self.Rho() == 1:
-            return 1/(sum + temp * (self.K-self.C+1))
+    def muyn(self, n):
+        if n < self.C:
+            return n*self.muy
+        else:
+            return self.C*self.muy
 
     def PN(self, n):
         if(n > self.C):
