@@ -23,6 +23,12 @@ class M_M_1(object):
             pass
         return self.P0()*self.Rho**n
 
+    def PK(self):
+        """Xac xuat hang doi khong co khach hang"""
+        if not self.isVaild():
+            pass
+        return self.Rho()
+
     def L(self):
         """So luong phuc vu trung binh"""
         if not self.isVaild():
@@ -49,7 +55,10 @@ class M_M_1(object):
 
     def diplay(self):
         if self.isVaild():
-            print("He so co ich cua he thong: " + str(self.Rho()))
+            print("Mo hinh M/M/1")
+            print("rho: " + str(self.Rho()))
+            print("Xac suat tat ca kenh phuc vu ranh roi: " + str(self.P0()))
+            print("Xac suat tat ca kenh phuc vu ban: " + str(self.PK()))
             print("So khach hang trung binh trong he thong: " + str(self.L()))
             print("So khach hang trung binh trong hang cho: " + str(self.Lq()))
             print("Thoi gian doi trung binh trong he thong: " + str(self.W()))

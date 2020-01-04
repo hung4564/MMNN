@@ -20,12 +20,13 @@ class M_M_C(object):
         """Xac xuat hang doi khong co khach hang"""
         if not self.isVaild():
             pass
-        sum = 0
         temp = ((self.r()**self.C)*self.C) / \
             (math.factorial(self.C)*(self.C - self.r()))
+        temp2 = 0
         for i in range(0, self.C):
-            sum += ((self.lamda/self.muy)**i)/(math.factorial(i))
-        return 1/(sum + temp)
+            temp3 = ((self.r())**i)/(math.factorial(i))
+            temp2 += temp3
+        return 1.0/(temp2 + temp)
 
     def PN(self, n):
         """Xac xuat hang doi co n khach hang"""
@@ -35,6 +36,9 @@ class M_M_C(object):
             return self.P0()*(self.r()**n)/math.factorial(n)
         else:
             return self.P0()*(self.r()**n)/(math.factorial(self.C)*self.C**(n-self.C))
+
+    def PK(self):
+        return self.PN(self.C)
 
     def L(self):
         """So luong phuc vu trung binh"""
@@ -54,7 +58,7 @@ class M_M_C(object):
         """Thoi gian phuc vu trung binh"""
         if not self.isVaild():
             pass
-        return self.Wq() + 1/self.muy
+        return self.Wq() + 1.0/self.muy
 
     def Wq(self):
         """Thoi gian doi trung binh"""
@@ -64,7 +68,10 @@ class M_M_C(object):
 
     def diplay(self):
         if self.isVaild():
-            print("He so co ich cua he thong: " + str(self.Rho()))
+            print("Mo hinh M/M/"+str(self.C))
+            print("rho: " + str(self.Rho()))
+            print("Xac suat tat ca kenh phuc vu ranh roi: " + str(self.P0()))
+            print("Xac suat tat ca kenh phuc vu ban: " + str(self.PK()))
             print("So khach hang trung binh trong he thong: " + str(self.L()))
             print("So khach hang trung binh trong hang cho: " + str(self.Lq()))
             print("Thoi gian doi trung binh trong he thong: " + str(self.W()))

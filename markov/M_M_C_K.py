@@ -20,7 +20,7 @@ class M_M_C_K(object):
         for i in range(0, self.K):
             temp2 *= self.lamdan(i)/self.muyn(i+1)
             temp1 += temp2
-        return 1/(1+temp1)
+        return 1.0/(1+temp1)
 
     def lamdan(self, n):
         return self.lamda
@@ -60,7 +60,10 @@ class M_M_C_K(object):
         return self.Lq()/self.lamda
 
     def diplay(self):
-        print("He so co ich cua he thong: " + str(self.Rho()))
+        print("Mo hinh M/M/"+str(self.C)+"/"+str(self.K))
+        print("rho: " + str(self.Rho()))
+        print("Xac suat tat ca kenh phuc vu ranh roi: " + str(self.P0()))
+        print("Xac suat tat ca kenh phuc vu ban: " + str(self.PK()))
         print("So khach hang trung binh trong he thong: " + str(self.L()))
         print("So khach hang trung binh trong hang cho: " + str(self.Lq()))
         print("Thoi gian doi trung binh trong he thong: " + str(self.W()))
