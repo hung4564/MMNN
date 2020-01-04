@@ -46,11 +46,11 @@ class M_M_1_K(object):
 
     def W(self):
         """Thoi gian phuc vu trung binh"""
-        return self.L()/(self.lamda*(1 - self.PK()))
+        return self.Wq()+1.0/self.muy
 
     def Wq(self):
         """Thoi gian doi trung binh"""
-        return self.W()-1.0/self.muy
+        return self.Lq()/self.lamda
 
     def diplay(self):
         print("Mo hinh M/M/1/"+str(self.K))
